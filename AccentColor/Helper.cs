@@ -109,7 +109,7 @@ namespace AccentColor
             try
             {
                 HttpClient httpClient = new HttpClient();
-                HttpResponseMessage response = await httpClient.GetAsync(new Uri("https://api.myjson.com/bins/15n2pq"));
+                HttpResponseMessage response = await httpClient.GetAsync(new Uri("https://jsonstorage.net/api/items/59119bb7-7ed4-40de-a6b4-cca0c3b67e39"));
                 string responsetext = await response.Content.ReadAsStringAsync();
                 string[] colortext = JsonObject.Parse(responsetext).GetNamedString("color").Split(',');
                 return Color.FromArgb(0xff, Convert.ToByte(colortext[0]), Convert.ToByte(colortext[1]), Convert.ToByte(colortext[2]));
