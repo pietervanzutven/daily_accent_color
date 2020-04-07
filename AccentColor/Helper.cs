@@ -2,6 +2,7 @@
 using System;
 using System.Globalization;
 using System.Threading.Tasks;
+using Windows.Data.Json;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.Web.Http;
@@ -110,7 +111,7 @@ namespace AccentColor
                 HttpClient httpClient = new HttpClient();
                 HttpResponseMessage response = await httpClient.GetAsync(new Uri("https://api.myjson.com/bins/15n2pq"));
                 string responsetext = await response.Content.ReadAsStringAsync();
-                string[] colortext = responsetext.Replace("{\"color\":\"", "").Replace("\"}", "").Split(',');
+                string[] colortext = JsonObject.Parse(responsetext).GetNamedString("color").Split(',');
                 return Color.FromArgb(0xff, Convert.ToByte(colortext[0]), Convert.ToByte(colortext[1]), Convert.ToByte(colortext[2]));
             }
             catch
