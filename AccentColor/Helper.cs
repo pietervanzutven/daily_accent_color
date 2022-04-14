@@ -109,7 +109,7 @@ namespace AccentColor
             try
             {
                 HttpClient httpClient = new HttpClient();
-                HttpResponseMessage response = await httpClient.GetAsync(new Uri("https://api.jsonstorage.net/v1/json/076d7eeb-61fe-4a6e-b0cb-23094644edda"));
+                HttpResponseMessage response = await httpClient.GetAsync(new Uri("https://jsonbase.com/dailywallpaper/color"));
                 string responsetext = await response.Content.ReadAsStringAsync();
                 string[] colortext = JsonObject.Parse(responsetext).GetNamedString("color").Split(',');
                 return Color.FromArgb(0xff, Convert.ToByte(colortext[0]), Convert.ToByte(colortext[1]), Convert.ToByte(colortext[2]));
